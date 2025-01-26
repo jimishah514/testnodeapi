@@ -1,6 +1,6 @@
 import express from "express";
 
-const port = 4000;
+const port = 3001;
 const app = express();
 
 // Define a route for the root URL
