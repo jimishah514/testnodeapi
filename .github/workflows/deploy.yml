@@ -10,22 +10,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Checkout the repository
-    - name: Checkout Code
-      uses: actions/checkout@v3
+      # Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    # Set up SSH for deployment
-    - name: Setup SSH
-      uses: webfactory/ssh-agent@v0.5.3
-      with:
-        ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+      # Set up SSH for deployment
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
-    # Deploy to EC2
-    - name: Deploy to EC2
-      run: |
-        ssh -o StrictHostKeyChecking=no ubuntu@16.170.87.245 << 'EOF'
-        cd /testnodeapi
-        git pull origin main
-        npm install
-        pm2 restart my-node-app
-        EOF
+      # Deploy to EC2
+      - name: Deploy to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ubuntu@16.170.87.245 << 'EOF'
+          cd testnodeapi/
+          git pull origin main
+          npm install
+          pm2 restart my-node-app
+          EOF
