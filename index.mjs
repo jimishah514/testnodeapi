@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/sayHello", async (req, res) => {
-  return res.json({ hello: "hello" });
+  return res.json({ hello: "hello from dev" });
 });
 app.listen(port, () => {
   console.log(`server is listening at port ${port}`);
